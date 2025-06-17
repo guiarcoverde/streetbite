@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\src\StreetBite.Communication\StreetBite.Communication.csproj" />
+      <ProjectReference Include="..\src\StreetBite.Domain\StreetBite.Domain.csproj" />
+    </ItemGroup>
+
+</Project>
