@@ -13,5 +13,12 @@
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.1" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\StreetBite.Application\StreetBite.Application.csproj" />
+    <ProjectReference Include="..\StreetBite.Infrastructure\StreetBite.Infrastructure.csproj" />
+    <ProjectReference Include="..\StreetBite.Communication\StreetBite.Communication.csproj" />
+    <ProjectReference Include="..\StreetBite.Infrastructure\StreetBite.Infrastructure.csproj" />
+  </ItemGroup>
 
 </Project>
