@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using StreetBite.Domain.Repositories;
 using StreetBite.Domain.Repositories.User;
 using StreetBite.Infrastructure.DataAccess;
+using StreetBite.Infrastructure.DataAccess.Repositories;
 
 namespace StreetBite.Infrastructure;
 
@@ -19,7 +20,7 @@ public static class DependencyInjectionExtension
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-        services.AddScoped<IUserWriteOnlyRepository>();
+        services.AddScoped<ICommonUserWriteOnlyRepository, CommonUserRepository>();
     }
     
     private static void AddDbContext(IServiceCollection services, IConfiguration configuration)

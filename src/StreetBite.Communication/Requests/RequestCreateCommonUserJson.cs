@@ -1,6 +1,6 @@
 namespace StreetBite.Communication.Requests;
 
-public class RequestCreateUserJson
+public class RequestCreateCommonUserJson
 {
     public long Cpf { get; set; }
     public string FirstName { get; set; } = string.Empty;

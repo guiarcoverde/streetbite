@@ -13,6 +13,6 @@ public class AutoMapping : Profile
 
     private void RequestToEntity()
     {
-        CreateMap<RequestCreateUserJson, User>();
+        CreateMap<RequestCreateCommonUserJson, User>();
     }
 }

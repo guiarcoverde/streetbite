@@ -4,7 +4,7 @@ using StreetBite.Infrastructure.Identity;
 
 namespace StreetBite.Infrastructure.DataAccess.Repositories;
 
-public class UserRepository(StreetBiteDbContext dbContext) : IUserWriteOnlyRepository
+public class CommonUserRepository(StreetBiteDbContext dbContext) : ICommonUserWriteOnlyRepository
 {
     private readonly StreetBiteDbContext _dbContext = dbContext;
 
