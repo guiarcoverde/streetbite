@@ -19,7 +19,18 @@ public class CommonUserRepository(UserManager<ApplicationUser> userManager) : IC
             throw new InvalidOperationException("Failed to create user: " + string.Join(", ", result.Errors.Select(e => e.Description)));
         }
         
+        if (string.IsNullOrEmpty(appUser.Email))
+        {
+            throw new InvalidOperationException("Email cannot be null or empty.");
+        }
+        
         var user = await _userManager.FindByEmailAsync(appUser.Email);
+        
+        if (user == null)
+        {
+            throw new InvalidOperationException("User not found after creation.");
+        }
+        
         var roleResult = await _userManager.AddToRoleAsync(user, "Common");
         
         if (!roleResult.Succeeded)
