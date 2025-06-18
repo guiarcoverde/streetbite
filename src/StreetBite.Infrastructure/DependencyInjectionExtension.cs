@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StreetBite.Domain.Repositories;
+using StreetBite.Domain.Repositories.Security;
 using StreetBite.Domain.Repositories.Users.CommonUser;
 using StreetBite.Infrastructure.DataAccess;
 using StreetBite.Infrastructure.DataAccess.Repositories;
@@ -13,6 +14,7 @@ public static class DependencyInjectionExtension
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         AddRepositories(services);
+        AddSecurity(services);
         AddDbContext(services, configuration);
     }
     
@@ -29,5 +31,10 @@ public static class DependencyInjectionExtension
 
         services.AddDbContext<StreetBiteDbContext>(config =>
             config.UseNpgsql(psqlConnectionString));
+    }
+    
+    private static void AddSecurity(IServiceCollection services)
+    {
+        services.AddScoped<IPasswordEncrypt, Security.Cryptography.BCrypt>();
     }
 }
