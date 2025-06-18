@@ -3,6 +3,7 @@ using StreetBite.Communication.Requests;
 using StreetBite.Domain.Entities;
 using StreetBite.Domain.Repositories;
 using StreetBite.Domain.Repositories.User;
+using StreetBite.Domain.Repositories.User.CommonUser;
 
 namespace StreetBite.Application.UseCases.Users.CommonUser;
 

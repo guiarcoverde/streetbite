@@ -1,4 +1,4 @@
-namespace StreetBite.Domain.Repositories.User;
+namespace StreetBite.Domain.Repositories.User.CommonUser;
 
 public interface ICommonUserWriteOnlyRepository
 {

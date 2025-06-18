@@ -1,5 +1,6 @@
 using StreetBite.Domain.Entities;
 using StreetBite.Domain.Repositories.User;
+using StreetBite.Domain.Repositories.User.CommonUser;
 using StreetBite.Infrastructure.Identity;
 
 namespace StreetBite.Infrastructure.DataAccess.Repositories;
