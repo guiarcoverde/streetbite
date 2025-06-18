@@ -46,6 +46,10 @@ public class ApplicationUser : IdentityUser
             Email = this.Email!,
             FirstName = this.FirstName,
             LastName = this.LastName,
+            Address = this.Address,
+            City = this.City,
+            State = this.State,
+            ZipCode = this.ZipCode,
         };
     }
 }

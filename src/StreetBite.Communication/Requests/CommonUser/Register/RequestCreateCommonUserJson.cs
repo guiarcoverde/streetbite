@@ -1,4 +1,4 @@
-namespace StreetBite.Communication.Requests;
+namespace StreetBite.Communication.Requests.CommonUser.Register;
 
 public class RequestCreateCommonUserJson
 {

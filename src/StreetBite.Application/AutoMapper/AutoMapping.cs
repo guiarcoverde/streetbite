@@ -1,5 +1,6 @@
 using AutoMapper;
 using StreetBite.Communication.Requests;
+using StreetBite.Communication.Requests.CommonUser.Register;
 using StreetBite.Domain.Entities;
 using StreetBite.Domain.Entities.Users;
 

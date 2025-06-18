@@ -4,9 +4,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StreetBite.Domain.Repositories;
 using StreetBite.Domain.Repositories.Users.CommonUser;
+using StreetBite.Domain.Security.Tokens;
+using StreetBite.Domain.Services.Login.CommonUser;
 using StreetBite.Infrastructure.DataAccess;
 using StreetBite.Infrastructure.DataAccess.Repositories;
 using StreetBite.Infrastructure.Identity;
+using StreetBite.Infrastructure.Security.Token;
 
 namespace StreetBite.Infrastructure;
 
@@ -16,6 +19,7 @@ public static class DependencyInjectionExtension
     {
         AddRepositories(services);
         AddSecurity(services);
+        AddToken(services, configuration);
         AddDbContext(services, configuration);
     }
     
@@ -37,6 +41,7 @@ public static class DependencyInjectionExtension
     private static void AddSecurity(IServiceCollection services)
     {
         services.AddTransient<RoleSeeder>();
+        services.AddScoped<ICommonUserLoginService, LoginService>();
         
         services
             .AddIdentity<ApplicationUser, IdentityRole>(options =>
@@ -50,5 +55,12 @@ public static class DependencyInjectionExtension
             })
             .AddEntityFrameworkStores<StreetBiteDbContext>()
             .AddDefaultTokenProviders();
+    }
+
+    private static void AddToken(this IServiceCollection services, IConfiguration configuration)
+    {
+        var expirationTimeMinutes = configuration.GetValue<uint>("Settings:Jwt:ExpiresMinutes");
+        var signingKey = configuration.GetValue<string>("Settings:Jwt:SigningKey");
+        services.AddScoped<IAccessTokenGenerator>(opt => new JwtTokenGenerator(expirationTimeMinutes, signingKey!));
     }
 }

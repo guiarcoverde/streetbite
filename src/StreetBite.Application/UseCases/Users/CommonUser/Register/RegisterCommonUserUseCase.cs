@@ -1,9 +1,9 @@
 using AutoMapper;
-using StreetBite.Communication.Requests;
+using StreetBite.Communication.Requests.CommonUser.Register;
 using StreetBite.Domain.Repositories;
 using StreetBite.Domain.Repositories.Users.CommonUser;
 
-namespace StreetBite.Application.UseCases.Users.CommonUser;
+namespace StreetBite.Application.UseCases.Users.CommonUser.Register;
 
 public class RegisterCommonUserUseCase(
     IMapper mapper, 
