@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StreetBite.Domain.Repositories;
-using StreetBite.Domain.Repositories.Security;
 using StreetBite.Domain.Repositories.Users.CommonUser;
 using StreetBite.Infrastructure.DataAccess;
 using StreetBite.Infrastructure.DataAccess.Repositories;
@@ -46,6 +45,5 @@ public static class DependencyInjectionExtension
                 options.Password.RequiredUniqueChars = 0;
             })
             .AddEntityFrameworkStores<StreetBiteDbContext>(); 
-        services.AddScoped<IPasswordEncrypt, Security.Cryptography.BCrypt>();
     }
 }
