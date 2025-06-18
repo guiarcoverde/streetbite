@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 using StreetBite.Domain.Entities;
+using StreetBite.Domain.Entities.Users;
 
 namespace StreetBite.Infrastructure.Identity;
 
@@ -19,28 +20,28 @@ public class ApplicationUser : IdentityUser
     public long ZipCode { get; set; }
     public long Cpf { get; set; }
     
-    public static ApplicationUser FromDomain(User domainUser)
+    public static ApplicationUser FromDomain(CommonUser domainCommonUser)
     {
         return new ApplicationUser
         {
-            Id = domainUser.Id.ToString(),
-            Email = domainUser.Email,
-            UserName = domainUser.Email,
-            PasswordHash = domainUser.Password,
-            FirstName = domainUser.FirstName,
-            LastName = domainUser.LastName,
-            PhoneNumber = domainUser.Phone,
-            Address = domainUser.Address,
-            City = domainUser.City,
-            State = domainUser.State,
-            ZipCode = domainUser.ZipCode,
-            Cpf = domainUser.Cpf,
+            Id = domainCommonUser.Id.ToString(),
+            Email = domainCommonUser.Email,
+            UserName = domainCommonUser.Email,
+            PasswordHash = domainCommonUser.Password,
+            FirstName = domainCommonUser.FirstName,
+            LastName = domainCommonUser.LastName,
+            PhoneNumber = domainCommonUser.Phone,
+            Address = domainCommonUser.Address,
+            City = domainCommonUser.City,
+            State = domainCommonUser.State,
+            ZipCode = domainCommonUser.ZipCode,
+            Cpf = domainCommonUser.Cpf,
         };
     }
     
-    public User ToDomain()
+    public CommonUser ToDomain()
     {
-        return new User
+        return new CommonUser
         {
             Id = Guid.Parse(Id),
             Email = this.Email!,

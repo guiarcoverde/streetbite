@@ -1,9 +1,7 @@
 using AutoMapper;
 using StreetBite.Communication.Requests;
-using StreetBite.Domain.Entities;
 using StreetBite.Domain.Repositories;
-using StreetBite.Domain.Repositories.User;
-using StreetBite.Domain.Repositories.User.CommonUser;
+using StreetBite.Domain.Repositories.Users.CommonUser;
 
 namespace StreetBite.Application.UseCases.Users.CommonUser;
 
@@ -18,7 +16,7 @@ public class RegisterCommonUserUseCase(
     
     public async Task Execute(RequestCreateCommonUserJson requestCreateCommonUserJson)
     {
-        var user = _mapper.Map<User>(requestCreateCommonUserJson);
+        var user = _mapper.Map<Domain.Entities.Users.CommonUser>(requestCreateCommonUserJson);
         
         await _commonUserWriteOnlyRepository.Add(user);
         await _unitOfWork.Commit();

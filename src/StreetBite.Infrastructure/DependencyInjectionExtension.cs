@@ -2,8 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StreetBite.Domain.Repositories;
-using StreetBite.Domain.Repositories.User;
-using StreetBite.Domain.Repositories.User.CommonUser;
+using StreetBite.Domain.Repositories.Users.CommonUser;
 using StreetBite.Infrastructure.DataAccess;
 using StreetBite.Infrastructure.DataAccess.Repositories;
 

@@ -1,6 +1,6 @@
-namespace StreetBite.Domain.Entities;
+namespace StreetBite.Domain.Entities.Users;
 
-public class User
+public class CommonUser
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     public long Cpf { get; set; }
