@@ -27,7 +27,6 @@ public class ApplicationUser : IdentityUser
             Id = domainCommonUser.Id.ToString(),
             Email = domainCommonUser.Email,
             UserName = domainCommonUser.Email,
-            PasswordHash = domainCommonUser.Password,
             FirstName = domainCommonUser.FirstName,
             LastName = domainCommonUser.LastName,
             PhoneNumber = domainCommonUser.Phone,

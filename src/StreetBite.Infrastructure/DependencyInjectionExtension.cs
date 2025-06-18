@@ -6,6 +6,7 @@ using StreetBite.Domain.Repositories.Security;
 using StreetBite.Domain.Repositories.Users.CommonUser;
 using StreetBite.Infrastructure.DataAccess;
 using StreetBite.Infrastructure.DataAccess.Repositories;
+using StreetBite.Infrastructure.Identity;
 
 namespace StreetBite.Infrastructure;
 
@@ -35,6 +36,16 @@ public static class DependencyInjectionExtension
     
     private static void AddSecurity(IServiceCollection services)
     {
+        services.AddIdentityCore<ApplicationUser>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 1;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false; 
+                options.Password.RequiredUniqueChars = 0;
+            })
+            .AddEntityFrameworkStores<StreetBiteDbContext>(); 
         services.AddScoped<IPasswordEncrypt, Security.Cryptography.BCrypt>();
     }
 }
