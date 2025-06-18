@@ -2,7 +2,7 @@ namespace StreetBite.Domain.Entities;
 
 public class User
 {
-    public string Id { get; set; } = string.Empty;
+    public Guid Id { get; set; } = Guid.NewGuid();
     public long Cpf { get; set; }
     public string FirstName { get; set; } = string.Empty;
     public string LastName { get; set; } = string.Empty;
@@ -12,5 +12,5 @@ public class User
     public string Address { get; set; } = string.Empty;
     public string City { get; set; } = string.Empty;
     public string State { get; set; } = string.Empty;
-    public string ZipCode { get; set; } = string.Empty;
+    public long ZipCode { get; set; }
 }
