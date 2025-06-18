@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using StreetBite.Application;
 using StreetBite.Infrastructure;
+using StreetBite.Infrastructure.Identity;
 using StreetBite.Infrastructure.Migrations;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +18,12 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Configuration.GetConnectionString("DbConnection");
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var roleSeeder = scope.ServiceProvider.GetRequiredService<RoleSeeder>();
+    await roleSeeder.SeedRolesAsync();
+}
 
 app.UseSwagger();
 app.UseSwaggerUI();

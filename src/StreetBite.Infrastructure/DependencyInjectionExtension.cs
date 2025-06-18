@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,7 +36,10 @@ public static class DependencyInjectionExtension
     
     private static void AddSecurity(IServiceCollection services)
     {
-        services.AddIdentityCore<ApplicationUser>(options =>
+        services.AddTransient<RoleSeeder>();
+        
+        services
+            .AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.Password.RequireDigit = false;
                 options.Password.RequiredLength = 1;
@@ -44,6 +48,7 @@ public static class DependencyInjectionExtension
                 options.Password.RequireNonAlphanumeric = false; 
                 options.Password.RequiredUniqueChars = 0;
             })
-            .AddEntityFrameworkStores<StreetBiteDbContext>(); 
+            .AddEntityFrameworkStores<StreetBiteDbContext>()
+            .AddDefaultTokenProviders();
     }
 }

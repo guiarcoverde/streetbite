@@ -13,9 +13,18 @@ public class CommonUserRepository(UserManager<ApplicationUser> userManager) : IC
     {
         var appUser = ApplicationUser.FromDomain(commonUser);
         var result = await _userManager.CreateAsync(appUser, commonUser.Password);
+        
         if (!result.Succeeded)
         {
             throw new InvalidOperationException("Failed to create user: " + string.Join(", ", result.Errors.Select(e => e.Description)));
+        }
+        
+        var user = await _userManager.FindByEmailAsync(appUser.Email);
+        var roleResult = await _userManager.AddToRoleAsync(user, "Common");
+        
+        if (!roleResult.Succeeded)
+        {
+            throw new InvalidOperationException("Failed to assign role: " + string.Join(", ", roleResult.Errors.Select(e => e.Description)));
         }
     }
 
